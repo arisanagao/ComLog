@@ -1,5 +1,17 @@
 body {
-  background-color: #e7eff7; }
+  background-color: #e7eff7;
+}
 
+.list-group {
+	font-size: medium;
+}
 
+.list-group{
+	text-align: right;
+}
+
+.list-group p{
+	text-align: left;
+	word-wrap: break-word;
+}
 /*# sourceMappingURL=tweets.css.map */

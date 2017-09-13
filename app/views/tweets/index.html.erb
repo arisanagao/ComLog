@@ -1,13 +1,22 @@
 <div class="container">
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
     <p><%= notice %></p>
-      <%= link_to "ツイートする", new_tweet_path, class: 'btn btn-default' %>
-    <% @tweets.each do |tweet| %>
+    <%= link_to "ツイートする", new_tweet_path, class: 'btn btn-default' %>
+      
     <div class="row">
-      <p><%= tweet.content %></p>
-      <%= link_to "編集", edit_tweet_path(tweet.id), class: 'btn btn-default btn-sm btn-success' %>
-      <%= link_to "削除", tweet_path(tweet.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
-    </div>
+      <div class="col-sm-8 col-sm-offset-2">
+        <ul class="list-group">  
+        <% @tweets.each do |tweet| %>
+        <li class="list-group-item">
+          <p class="tweet"><%= tweet.content %>
+      <br>
+      </p>
+      <%= link_to "編集", edit_tweet_path(tweet.id), class: 'btn-sm btn-success' %>
+      <%= link_to "削除", tweet_path(tweet.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn-sm btn-danger' %>
+    </li>
     <% end %>
+    </ul>
+    </div>
+    </div>
   </div>
 </div>

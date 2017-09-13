@@ -6,13 +6,20 @@ class TweetsController < ApplicationController
   end
 
   def new
-    @tweet = Tweet.new
+    if params[:back]
+      @tweet = Tweet.new(tweets_params)
+    else
+      @tweet = Tweet.new
+    end
   end
 
   def create
     @tweet = Tweet.new(tweets_params)
     if @tweet.save
-      redirect_to tweets_path, notice: 'ツイートを'
+      redirect_to tweets_path, notice: 'ツイートを送信しました'
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -20,7 +27,7 @@ class TweetsController < ApplicationController
 
   def update
     if @tweet.update(tweets_params)
-      redirect_to tweets_path
+      redirect_to tweets_path, notice: 'ツイートを更新しました'
     else
       render 'edit'
     end
@@ -31,6 +38,11 @@ class TweetsController < ApplicationController
     redirect_to tweets_path, notice: 'ツイートを削除しました'
   end
 
+  def confirm
+    @tweet = Tweet.new(tweets_params)
+    render :new if @tweet.invalid?
+  end
+  
 private
 
   def tweets_params
@@ -40,5 +52,4 @@ private
   def set_tweet
     @tweet = Tweet.find(params[:id])
   end
-  
 end
