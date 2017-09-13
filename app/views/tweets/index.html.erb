@@ -6,17 +6,17 @@
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2">
         <ul class="list-group">  
-        <% @tweets.each do |tweet| %>
-        <li class="list-group-item">
-          <p class="tweet"><%= tweet.content %>
-      <br>
-      </p>
-      <%= link_to "編集", edit_tweet_path(tweet.id), class: 'btn-sm btn-success' %>
-      <%= link_to "削除", tweet_path(tweet.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn-sm btn-danger' %>
-    </li>
-    <% end %>
-    </ul>
-    </div>
+          <% @tweets.each do |tweet| %>
+            <li class="list-group-item">
+              <p class="tweet"><%= tweet.content %>
+              <br>
+              </p>
+              <%= link_to "編集", edit_tweet_path(tweet.id), class: 'btn-sm btn-success' %>
+              <%= link_to "削除", tweet_path(tweet.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn-sm btn-danger' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
